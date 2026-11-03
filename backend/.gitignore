@@ -1,0 +1,21 @@
+# dependencies
+/node_modules
+
+# data files (except JSON structure)
+/data/*.json
+!/data/jobs.json
+!/data/applications.json
+
+# uploaded resumes
+/data/resumes/*
+
+# environment variables
+.env
+
+# logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db

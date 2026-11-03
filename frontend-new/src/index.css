@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f3f4f6; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track { background: #1f2937; }
+.dark ::-webkit-scrollbar-thumb { background: #4b5563; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+
+/* Chat bubble prose */
+.prose pre { background: #f3f4f6; border-radius: 0.5rem; padding: 0.75rem; font-size: 0.875rem; overflow-x: auto; }
+.prose code { color: #2563eb; background: #eff6ff; padding: 0 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
+.dark .prose pre { background: #1f2937; }
+.dark .prose code { color: #60a5fa; background: rgba(30, 58, 138, 0.3); }

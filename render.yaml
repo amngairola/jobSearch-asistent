@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: ai-job-assistant-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-20b
+      - key: TAVILY_API_KEY
+        sync: false
+      - key: AGENT_ALLOW_AUTOMATION
+        value: "false"
+      - key: FRONTEND_URL
+        sync: false
+        # Set this to your Vercel deployment URL, e.g. https://your-app.vercel.app
+      - key: STORAGE_DIR
+        value: /data
+    disk:
+      name: job-assistant-data
+      mountPath: /data
+      sizeGB: 1

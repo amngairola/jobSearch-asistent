@@ -1,0 +1,42 @@
+John Doe
+Software Engineer
+Email: john.doe@example.com
+Phone: +1-555-0123
+Location: San Francisco, CA
+
+SKILLS
+JavaScript, React, Node.js, Python, MongoDB, PostgreSQL, AWS, Docker, Git, TypeScript, REST APIs, GraphQL
+
+EXPERIENCE
+Senior Software Engineer at Tech Corp
+2021 - Present
+- Developed and maintained microservices architecture
+- Led a team of 5 developers
+- Improved system performance by 40%
+
+Software Developer at Startup Inc
+2019 - 2021
+- Built React-based web applications
+- Implemented CI/CD pipelines
+- Collaborated with cross-functional teams
+
+Junior Developer at Web Agency
+2017 - 2019
+- Developed responsive websites
+- Maintained legacy codebases
+
+EDUCATION
+Bachelor of Science in Computer Science
+University of California, Berkeley
+2013 - 2017
+
+PROJECTS
+E-commerce Platform
+- Full-stack development with React and Node.js
+- Integrated payment gateways
+- Deployed on AWS
+
+Task Management App
+- Built with React and Redux
+- Real-time collaboration features
+- PostgreSQL database
