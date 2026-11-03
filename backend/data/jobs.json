@@ -34003,7 +34003,7 @@
     "id": "latest",
     "data": [
       {
-        "id": "76173c72-9c56-4a7f-82e9-eaa1b8a2ad02",
+        "id": "b820fa1e-da78-4461-899c-958c0cd6ee60",
         "title": "AI & React.js Developer Job Remote India | Career",
         "company": "DXC Luxoft",
         "location": "pin icon\n\nGothenburg\n\nRemote India, India\n\nReq (Remote)",
@@ -34032,7 +34032,7 @@
         "publishedDate": null
       },
       {
-        "id": "06c70dc7-5e77-44c1-aa2d-37a2b507e557",
+        "id": "faab2eba-216b-4167-9835-f5e9b8494c33",
         "title": "React Developer - tudip.com",
         "company": "Tudip",
         "location": "Remote / Unspecified",
@@ -34057,7 +34057,7 @@
         "publishedDate": null
       },
       {
-        "id": "5b4f6ebb-9be2-47ca-97cc-83793a8a0445",
+        "id": "e73974c8-ab07-4d4b-a609-c0e20deee788",
         "title": "Best Job Boards for React Developers in India (2026) | Jobrix",
         "company": "Tryjobrix",
         "location": "Remote",
@@ -34081,29 +34081,7 @@
         "publishedDate": null
       },
       {
-        "id": "54220d65-b75b-4d62-b365-04d2da09bbc8",
-        "title": "Hire the Best React.js Developers in India",
-        "company": "Upwork",
-        "location": "Remote / Unspecified",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Post a job ・ $4/hr$4 per hour 4.2 (84) 130 jobs ・ range from $13-$20 per hour,",
-        "responsibilities": [
-          "Hire leading React.js Developers in India on Upwork."
-        ],
-        "requirements": [],
-        "skills": [
-          "React",
-          "React.js"
-        ],
-        "applicationUrl": "https://www.upwork.com/hire/react-js-developers/in",
-        "sourceUrl": "https://www.upwork.com/hire/react-js-developers/in",
-        "source": "tavily",
-        "publishedDate": null
-      },
-      {
-        "id": "547da5d9-7aca-470d-a105-6142e5bdca19",
+        "id": "145072da-d786-4b18-a0c3-e11c3ef053d0",
         "title": "Instagram",
         "company": "Instagram",
         "location": "Remote / Unspecified",
@@ -34129,7 +34107,7 @@
         "publishedDate": null
       },
       {
-        "id": "c5e3c44c-c465-42b4-86a4-a2afcb72a9b5",
+        "id": "40b3f288-204c-4849-bd33-2c103fd7b579",
         "title": "Web UI - React Developer",
         "company": "Web UI",
         "location": "Remote / Unspecified",
@@ -34156,7 +34134,33 @@
         "publishedDate": null
       },
       {
-        "id": "59338d15-b29a-45dd-9161-c358aefbb423",
+        "id": "231ece5b-0189-40ac-a10d-6836d179c167",
+        "title": "Senior Full Stack UI Engineer (5+ Years in React.js, TypeScript/JavaScript and RESTful APIs) job in Westend Centre III, S. No. 169/1, Flr 2, Sector II, Aundh, Pune- 411007, Mahārāshtra, India | Product Development jobs",
+        "company": "FIS Global",
+        "location": "Westend Center I, S",
+        "employmentType": "Internship",
+        "experienceLevel": "Senior",
+        "salary": null,
+        "description": "Opportunity for a Senior Full Stack UI Engineer (5+ Years in React.js, TypeScript/JavaScript and RESTful APIs) job in Westend Centre III, S. No. 169/1, Flr 2, Sector II, Aundh, Pune- 411007, Mahārāshtra, India | Product Development jobs at FIS Global. Explore responsibilities, requirements, and required skills below.",
+        "responsibilities": [
+          "Location Westend Center I, S.No.169/1, FLR 7, Sector II, Aundh, Pune- 411007, Mahārāshtra, India Job Id JR0308781 Category Product Development Posted Date 10/08/2026 Location Westend Center I, S.No.169/1, FLR 7, Sector II, Aundh, Pune- 411007, Mahārāshtra, India Job Id JR0303743 Category Product Development Posted Date 10/01/2026 Early Talent Full Time Internships Join Our Talent Network Events Blog My Applications Image 2: header logo Saved jobs 0 - Image 3: Job page banner # Senior Full Stack UI Engineer (5+ Years in React.js, TypeScript/JavaScript and RESTful APIs) Location Westend Centre III, S.",
+          "169/1, Flr 2, Sector II, Aundh, Pune- 411007, Mahārāshtra, India Job Id JR0307890 Category Product Development Posted Date 10/07/2026 - [x] Save Job"
+        ],
+        "requirements": [],
+        "skills": [
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "React.js",
+          "RESTful"
+        ],
+        "applicationUrl": "https://careers.fisglobal.com/us/en/job/FIGLUSJR0307890EXTERNAL/Senior-Full-Stack-UI-Engineer-5-Years-in-React-js-TypeScript-JavaScript-and-RESTful-APIs",
+        "sourceUrl": "https://careers.fisglobal.com/us/en/job/FIGLUSJR0307890EXTERNAL/Senior-Full-Stack-UI-Engineer-5-Years-in-React-js-TypeScript-JavaScript-and-RESTful-APIs",
+        "source": "tavily",
+        "publishedDate": null
+      },
+      {
+        "id": "4074bf73-6fb4-466a-a23c-c73be993d775",
         "title": "Hire BEST React Developers in India | Find Skilled Professionals",
         "company": "Unstop",
         "location": "Remote / Unspecified",
@@ -34179,7 +34183,7 @@
         "publishedDate": null
       },
       {
-        "id": "51cbad5c-8a6a-4ec6-9f18-6202ae8a2bbc",
+        "id": "1a9b38cc-5dd1-492c-bd8a-63290bbe9120",
         "title": "React.JS Developer Remote India | Spino Careers",
         "company": "Spinoinc",
         "location": "Remote",
@@ -34214,14 +34218,36 @@
         "publishedDate": null
       },
       {
-        "id": "ad44a3a8-f536-401c-932f-0617506b4a18",
+        "id": "d31f14de-f0fe-4026-acd8-3f292f584a94",
+        "title": "Hire the Best React.js Developers in India",
+        "company": "Upwork",
+        "location": "Remote / Unspecified",
+        "employmentType": "Full-time",
+        "experienceLevel": null,
+        "salary": null,
+        "description": "Opportunity for a Hire the Best React.js Developers in India at Upwork. Explore responsibilities, requirements, and required skills below.",
+        "responsibilities": [
+          "Typical hourly rates for React.js developers in India range from $13-$20 per hour, as detailed in React.js developer costs on Upwork."
+        ],
+        "requirements": [],
+        "skills": [
+          "React",
+          "React.js"
+        ],
+        "applicationUrl": "https://www.upwork.com/hire/react-js-developers/in",
+        "sourceUrl": "https://www.upwork.com/hire/react-js-developers/in",
+        "source": "tavily",
+        "publishedDate": null
+      },
+      {
+        "id": "ed5cce5b-7a1b-41ef-99e7-7476146b4c7c",
         "title": "React Js Developer II in Gurugram, Haryana, India | Digital Technology",
         "company": "United Airlines",
         "location": "Remote / Unspecified",
         "employmentType": "Full-time",
         "experienceLevel": null,
         "salary": null,
-        "description": "Join our Talent Community We will notify you about relevant positions, and keep you in mind whenever we have interesting opportunities. Sign in Company Logo Company Logo jd banner Job compeltion image ### Thank you for your interest in joining the United team. While we are no longer accepting new applications for this position, our recruitment team is thoroughly evaluating all candidates.",
+        "description": "Company Logo Company Logo jd banner Job compeltion image ### Thank you for your interest in joining the United team. While we are no longer accepting new applications for this position, our recruitment team is thoroughly evaluating all candidates. We're committed to keeping you informed and will notify you once we've completed our selection process.",
         "responsibilities": [],
         "requirements": [],
         "skills": [
@@ -34233,40 +34259,7 @@
         "publishedDate": null
       },
       {
-        "id": "354dc68b-c450-42ac-8239-c1f508141ab5",
-        "title": "Careers at Timesworld | Jobs in Technology, Data & AI",
-        "company": "Timesworld",
-        "location": "Remote / Unspecified",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "You will ensure that these components and the overall application are robust and easy to maintain. You will coordinate with the rest of the team working on different layers of the infrastructure. Excellent troubleshooting skills.",
-        "responsibilities": [
-          "Your primary focus will be on developing user interface components and implementing them following well-known React.js workflows (such as Flux or Redux).",
-          "Developing and implementing highly responsive user interface components using react concepts Writing application interface codes using JavaScript following react.js workflows.",
-          "Building reusable components and front-end libraries for future use Troubleshooting interface software and debugging application codes."
-        ],
-        "requirements": [
-          "We are looking for a great JavaScript developer who is proficient with React.js.",
-          "Knowledge of Flutter is desired.",
-          "Therefore, a commitment to Knowledge of REACT tools including React.js, Webpack, Enzyme, Redux, and Flux.",
-          "Experience with user interface design.",
-          "Experience with browser-based debugging and performance testing software."
-        ],
-        "skills": [
-          "JavaScript",
-          "React",
-          "React.js",
-          "Redux",
-          "Webpack"
-        ],
-        "applicationUrl": "https://www.timesworld.com/careers/react-developer-dxb",
-        "sourceUrl": "https://www.timesworld.com/careers/react-developer-dxb",
-        "source": "tavily",
-        "publishedDate": null
-      },
-      {
-        "id": "e401da80-6e40-46ee-b3d5-506ab1851143",
+        "id": "9755fdde-03c3-42b7-8180-8265af432bb4",
         "title": "AAA Developer",
         "company": "Capco",
         "location": "India - Chennai ",
@@ -34283,7 +34276,7 @@
         "publishedDate": "2026-10-22T14:42:15.000Z"
       },
       {
-        "id": "62427bd6-5c66-4049-a131-6b5029e9dcdf",
+        "id": "777c9362-0fa8-4093-96e4-33e626da47dc",
         "title": "Aduaneiro | Híbrido - Macaé/RJ",
         "company": "Capco",
         "location": "Brazil - Sao Paulo",
@@ -34300,7 +34293,7 @@
         "publishedDate": "2026-10-22T14:42:15.000Z"
       },
       {
-        "id": "c55e76b2-edc8-401c-ae97-550a68695276",
+        "id": "a049899c-63bd-48ac-b478-f82f1b8f5c48",
         "title": "Agentic Architect",
         "company": "Capco",
         "location": "India",
@@ -34319,10 +34312,10 @@
         "publishedDate": "2026-10-22T14:42:15.000Z"
       },
       {
-        "id": "1f00b646-2043-4c57-b901-c57fdd362e47",
+        "id": "734732f0-193f-4575-9963-f8563d03f820",
         "title": "AI Architect",
         "company": "Capco",
-        "location": "Czech Republic; Czech Republic - Brno; Czech Republic - Prague",
+        "location": "Czech Republic - Prague",
         "employmentType": "Full-time",
         "experienceLevel": null,
         "salary": null,
@@ -34332,13 +34325,13 @@
         "skills": [
           "Azure"
         ],
-        "applicationUrl": "https://job-boards.greenhouse.io/capco/jobs/8207152",
-        "sourceUrl": "https://job-boards.greenhouse.io/capco/jobs/8207152",
+        "applicationUrl": "https://job-boards.greenhouse.io/capco/jobs/8349193",
+        "sourceUrl": "https://job-boards.greenhouse.io/capco/jobs/8349193",
         "source": "greenhouse",
-        "publishedDate": "2026-10-22T14:42:15.000Z"
+        "publishedDate": "2026-11-03T09:49:36.000Z"
       },
       {
-        "id": "157cbcb7-6b01-4cfc-a9fc-cafaa838e017",
+        "id": "43858f19-24d4-43c7-956d-8742a208b010",
         "title": "AI Business Consultant / Senior Consultant -Wealth & Asset Management",
         "company": "Capco",
         "location": "UK - London",
@@ -34355,7 +34348,7 @@
         "publishedDate": "2026-10-22T14:42:15.000Z"
       },
       {
-        "id": "a98e4be3-70c8-4508-ba9e-b6ce688e3a75",
+        "id": "4e7a78f3-98a8-492d-8c65-be671e95986f",
         "title": "AI Business Consulting Lead- Wealth & Asset Management",
         "company": "Capco",
         "location": "UK - London",
@@ -34372,34 +34365,7 @@
         "publishedDate": "2026-10-22T14:42:15.000Z"
       },
       {
-        "id": "47f1de1a-04c5-4cce-8cb7-e7af29fd57d9",
-        "title": "AI Engineer",
-        "company": "Capco",
-        "location": "Singapore",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Open position for AI Engineer  at Capco. Explore requirements and responsibilities below.",
-        "responsibilities": [],
-        "requirements": [],
-        "skills": [
-          "React",
-          "Java",
-          "SQL",
-          "Docker",
-          "Kubernetes",
-          "AWS",
-          "Azure",
-          "CI/CD",
-          "Git"
-        ],
-        "applicationUrl": "https://job-boards.greenhouse.io/capco/jobs/8248788",
-        "sourceUrl": "https://job-boards.greenhouse.io/capco/jobs/8248788",
-        "source": "greenhouse",
-        "publishedDate": "2026-10-22T14:42:15.000Z"
-      },
-      {
-        "id": "5ee42ad7-a563-4d95-a65d-6ada1fa4b147",
+        "id": "ed009ec9-e9c0-473d-a4dc-4db74f1a825d",
         "title": "Channel Sales, UK",
         "company": "Zinier",
         "location": "Remote - United Kingdom",
@@ -34416,7 +34382,7 @@
         "publishedDate": "2026-10-16T17:35:58.000Z"
       },
       {
-        "id": "cd8db225-3846-4446-bcc5-f549ad7b9198",
+        "id": "34abda5f-537f-47fa-81a5-720ccbe77238",
         "title": "Client Partner, Professional Services, UK",
         "company": "Zinier",
         "location": "Remote - United Kingdom",
@@ -34435,7 +34401,7 @@
         "publishedDate": "2026-10-19T22:14:43.000Z"
       },
       {
-        "id": "f49a89dc-69ba-492d-9a13-b95f289f497d",
+        "id": "096c0863-03ea-4b5a-8da9-c9fd531b3172",
         "title": "Client Partner, Professional Services, US",
         "company": "Zinier",
         "location": "Remote - United States",
@@ -34454,7 +34420,7 @@
         "publishedDate": "2026-10-19T22:13:38.000Z"
       },
       {
-        "id": "b9138853-c466-431c-9205-3f3b34d52c7a",
+        "id": "7bfb14f6-44b0-473e-a686-2198824ddb95",
         "title": "Customer Success Consultant, UK",
         "company": "Zinier",
         "location": "Remote - United Kingdom",
@@ -34471,7 +34437,7 @@
         "publishedDate": "2026-10-17T04:09:17.000Z"
       },
       {
-        "id": "83994d1d-a418-4c3f-b12f-4b82908f4537",
+        "id": "c41d008f-12f2-4ee0-8cf6-c486d8407a86",
         "title": "Customer Success Consultant, US",
         "company": "Zinier",
         "location": "Remote - United States",
@@ -34488,7 +34454,7 @@
         "publishedDate": "2026-10-19T22:13:49.000Z"
       },
       {
-        "id": "e9c27bcf-8a4b-41f6-964b-4afef23c25c9",
+        "id": "9f3d7311-9b5b-40df-9870-03afacb3e62d",
         "title": "Enterprise Sales Executive, UK",
         "company": "Zinier",
         "location": "Remote - United Kingdom",
@@ -34505,7 +34471,7 @@
         "publishedDate": "2026-10-16T17:37:26.000Z"
       },
       {
-        "id": "ea998984-f7da-46b7-9de4-8cb67a17144e",
+        "id": "01ac1fc7-2446-4b8c-ba86-37a0fb4c8579",
         "title": "Enterprise Sales Executive, US",
         "company": "Zinier",
         "location": "Remote - United States",
@@ -34522,7 +34488,7 @@
         "publishedDate": "2026-10-16T22:39:06.000Z"
       },
       {
-        "id": "60105da9-33bd-4554-a24e-61f230196334",
+        "id": "6d7ddf79-2621-4440-aea2-9ab8f542ad04",
         "title": "Founders Office, UK",
         "company": "Zinier",
         "location": "Remote - United Kingdom",
@@ -34539,7 +34505,7 @@
         "publishedDate": "2026-10-16T17:39:57.000Z"
       },
       {
-        "id": "f5a864a5-832e-4892-a390-ae098b5aaba4",
+        "id": "213070e6-c054-4501-925b-05023b2b9b15",
         "title": "Founders Office, US",
         "company": "Zinier",
         "location": "Remote, United States",
@@ -34556,7 +34522,7 @@
         "publishedDate": "2026-10-16T17:41:59.000Z"
       },
       {
-        "id": "7bca4bbb-e039-4058-9385-f33547001a76",
+        "id": "8702a87f-e7d3-4006-b339-207650405c25",
         "title": "LEAD-Customer Delivery",
         "company": "Zinier",
         "location": "Bangalore",
@@ -34573,7 +34539,7 @@
         "publishedDate": "2026-10-16T17:42:43.000Z"
       },
       {
-        "id": "7662876c-029c-4243-a41e-91108033187e",
+        "id": "b5d1cf3a-308c-4605-a7d6-114bcd2bbb9c",
         "title": "Accounts Payable Team Lead",
         "company": "Supplyhouse",
         "location": "Remote, Remote, United States",
@@ -34590,7 +34556,7 @@
         "publishedDate": "2026-10-28T13:00:56.000Z"
       },
       {
-        "id": "28963b78-a557-4fbe-a98a-8c01dc3544f1",
+        "id": "1ab31ce4-4e1f-4c2e-b6eb-c3b9d8c28edb",
         "title": "Analytics Engineer",
         "company": "Supplyhouse",
         "location": "Remote, Remote, United States",
@@ -34610,7 +34576,7 @@
         "publishedDate": "2026-10-28T16:03:06.000Z"
       },
       {
-        "id": "f8438803-27b0-425c-8d92-84765475bfb7",
+        "id": "81420510-1166-459e-89ed-604b7b12cf6d",
         "title": "Assistant General Manager",
         "company": "Supplyhouse",
         "location": "Atlanta, Georgia, United States",
@@ -34627,7 +34593,7 @@
         "publishedDate": "2026-10-19T12:57:52.000Z"
       },
       {
-        "id": "e387b0f1-bc83-4fb9-9685-6b90fe8096a0",
+        "id": "403d58b3-41d9-48b8-a0bb-f4b14af44604",
         "title": "Backend Engineer",
         "company": "Supplyhouse",
         "location": "Remote, Remote, India",
@@ -34651,7 +34617,7 @@
         "publishedDate": "2026-10-21T19:29:29.000Z"
       },
       {
-        "id": "86872705-2138-4cc8-8b71-aed867a1f8d5",
+        "id": "b865681f-2bc7-4742-ab4d-358ac1247488",
         "title": "Compliance Specialist",
         "company": "Supplyhouse",
         "location": "Remote, Remote, United States",
@@ -34668,7 +34634,7 @@
         "publishedDate": "2026-10-29T13:04:40.000Z"
       },
       {
-        "id": "29fb9019-7e65-4c04-8f95-b50f242134c6",
+        "id": "20bced37-1b88-4ebf-8075-769bef1403e1",
         "title": "Content Strategist",
         "company": "Supplyhouse",
         "location": "Remote, Remote, United States",
@@ -34685,7 +34651,7 @@
         "publishedDate": "2026-10-19T21:03:12.000Z"
       },
       {
-        "id": "15ce94b7-c4e8-4a3b-b424-6403f80a8b0e",
+        "id": "0ef37d05-7ddc-42a0-b0b5-6d0041e66dea",
         "title": "Director of Product",
         "company": "Supplyhouse",
         "location": "Remote, Remote, United States",
@@ -34702,7 +34668,7 @@
         "publishedDate": "2026-10-19T12:57:52.000Z"
       },
       {
-        "id": "ce9d3312-d6e9-467e-abd3-2fba19733747",
+        "id": "c962f9d5-9853-4272-8d4e-a160896fd625",
         "title": "Employee Relations Specialist",
         "company": "Supplyhouse",
         "location": "Remote, Remote, United States",
@@ -34719,7 +34685,7 @@
         "publishedDate": "2026-11-02T17:45:18.000Z"
       },
       {
-        "id": "9e382258-3a04-4a2a-aee0-22bfeeb7024e",
+        "id": "8c006eb7-ac6e-48ca-9d90-f7d1273fb336",
         "title": "Fulfillment Associate (NV)",
         "company": "Supplyhouse",
         "location": "Reno, Nevada, United States",
@@ -34736,7 +34702,7 @@
         "publishedDate": "2026-10-30T21:03:40.000Z"
       },
       {
-        "id": "65f1366b-de37-47d7-9298-f76e0760d8bd",
+        "id": "6f7ebad8-3df1-409e-a13e-bb2257a9c2e6",
         "title": "Inventory Control Supervisor",
         "company": "Supplyhouse",
         "location": "Reno, Nevada, United States",
@@ -34753,186 +34719,98 @@
         "publishedDate": "2026-10-29T21:12:32.000Z"
       },
       {
-        "id": "f2a20c17-3fb1-48ef-b6d3-85830edfc2f4",
-        "title": "Account Executive 销售专员",
-        "company": "Remotepeople",
-        "location": "China (Remote)",
+        "id": "6fc2486f-0993-48fe-8fe8-7b98d0aab429",
+        "title": "Academy Engineer - (Data Scientist- Training)",
+        "company": "Cognite",
+        "location": "India (Bengaluru)",
         "employmentType": "Full-time",
         "experienceLevel": null,
         "salary": null,
-        "description": "Open position for Account Executive 销售专员 at Remotepeople. Explore requirements and responsibilities below.",
-        "responsibilities": [],
-        "requirements": [],
-        "skills": [],
-        "applicationUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/5018700101",
-        "sourceUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/5018700101",
-        "source": "greenhouse",
-        "publishedDate": "2026-10-28T08:19:59.000Z"
-      },
-      {
-        "id": "cdbd114f-783b-4cde-ae17-70f93f544de5",
-        "title": "Customer Success Manager",
-        "company": "Remotepeople",
-        "location": "China",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Open position for Customer Success Manager at Remotepeople. Explore requirements and responsibilities below.",
-        "responsibilities": [],
-        "requirements": [],
-        "skills": [],
-        "applicationUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/5009545101",
-        "sourceUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/5009545101",
-        "source": "greenhouse",
-        "publishedDate": "2026-10-19T03:47:44.000Z"
-      },
-      {
-        "id": "af0b6989-529c-4dda-bcad-46c28ba60333",
-        "title": "Employee Support Specialist (HR, Payroll & Global Employment) – EMEA",
-        "company": "Remotepeople",
-        "location": "Remote - EMEA",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Open position for Employee Support Specialist (HR, Payroll & Global Employment) – EMEA at Remotepeople. Explore requirements and responsibilities below.",
-        "responsibilities": [],
-        "requirements": [],
-        "skills": [],
-        "applicationUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/4990048101",
-        "sourceUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/4990048101",
-        "source": "greenhouse",
-        "publishedDate": "2026-09-29T20:04:29.000Z"
-      },
-      {
-        "id": "03ab733f-cc10-44f2-82cc-865f16168676",
-        "title": "Full Stack Engineer (APAC)",
-        "company": "Remotepeople",
-        "location": "APAC or China (Remote)",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Open position for Full Stack Engineer (APAC) at Remotepeople. Explore requirements and responsibilities below.",
+        "description": "Open position for Academy Engineer - (Data Scientist- Training) at Cognite. Explore requirements and responsibilities below.",
         "responsibilities": [],
         "requirements": [],
         "skills": [
-          "TypeScript",
-          "React",
           "Python",
-          "Java",
-          "Spring",
-          "CSS",
-          "GraphQL",
-          "GitHub"
+          "SQL",
+          "Azure"
         ],
-        "applicationUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/5011829101",
-        "sourceUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/5011829101",
+        "applicationUrl": "https://job-boards.eu.greenhouse.io/cognite/jobs/4969944101",
+        "sourceUrl": "https://job-boards.eu.greenhouse.io/cognite/jobs/4969944101",
         "source": "greenhouse",
-        "publishedDate": "2026-10-22T01:59:05.000Z"
+        "publishedDate": "2026-09-30T18:12:21.000Z"
       },
       {
-        "id": "5bc8b8c8-7a8a-45f8-b390-9af57ebf9d60",
-        "title": "Global Workforce Compliance Advisor (Shanghai)",
-        "company": "Remotepeople",
-        "location": "Shanghai",
+        "id": "8a2c1d5c-b4a5-402b-a2f5-9c230ec49ef0",
+        "title": "Account Executive",
+        "company": "Cognite",
+        "location": "USA (Houston); USA (remote)",
         "employmentType": "Full-time",
         "experienceLevel": null,
         "salary": null,
-        "description": "Open position for Global Workforce Compliance Advisor (Shanghai) at Remotepeople. Explore requirements and responsibilities below.",
+        "description": "Open position for Account Executive at Cognite. Explore requirements and responsibilities below.",
         "responsibilities": [],
         "requirements": [],
         "skills": [],
-        "applicationUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/4979207101",
-        "sourceUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/4979207101",
+        "applicationUrl": "https://job-boards.eu.greenhouse.io/cognite/jobs/4948187101",
+        "sourceUrl": "https://job-boards.eu.greenhouse.io/cognite/jobs/4948187101",
         "source": "greenhouse",
-        "publishedDate": "2026-09-17T09:07:25.000Z"
+        "publishedDate": "2026-10-12T17:12:18.000Z"
       },
       {
-        "id": "4f3f950a-38cb-48cb-a79a-2d0d7632ceb3",
-        "title": "Growth & Field Marketing Manager (Brand, Social & Events)",
-        "company": "Remotepeople",
-        "location": "Remote - Americas",
+        "id": "28d7ae24-1013-4cef-8007-bc7fc0819d2e",
+        "title": "Account Executive (Process Manufacturing)",
+        "company": "Cognite",
+        "location": "Switzerland",
         "employmentType": "Full-time",
         "experienceLevel": null,
         "salary": null,
-        "description": "Open position for Growth & Field Marketing Manager (Brand, Social & Events) at Remotepeople. Explore requirements and responsibilities below.",
+        "description": "Open position for Account Executive (Process Manufacturing) at Cognite. Explore requirements and responsibilities below.",
         "responsibilities": [],
         "requirements": [],
         "skills": [],
-        "applicationUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/4997993101",
-        "sourceUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/4997993101",
+        "applicationUrl": "https://job-boards.eu.greenhouse.io/cognite/jobs/4867423101",
+        "sourceUrl": "https://job-boards.eu.greenhouse.io/cognite/jobs/4867423101",
         "source": "greenhouse",
-        "publishedDate": "2026-10-06T00:01:42.000Z"
+        "publishedDate": "2026-10-30T09:07:08.000Z"
       },
       {
-        "id": "1235cf3a-1ce8-4b76-8b59-14fead50e4c4",
-        "title": "Headhunting Services Manager (APAC）",
-        "company": "Remotepeople",
-        "location": "APAC (Remote)",
+        "id": "f3d4c3f8-beaa-4b47-99ab-c5a727afa6e9",
+        "title": "Business Development Director – Supply Chain Center of Excellence (CoE)",
+        "company": "Cognite",
+        "location": "Amsterdam, North Holland, Netherlands",
         "employmentType": "Full-time",
         "experienceLevel": null,
         "salary": null,
-        "description": "Open position for Headhunting Services Manager (APAC）    at Remotepeople. Explore requirements and responsibilities below.",
+        "description": "Open position for Business Development Director – Supply Chain Center of Excellence (CoE) at Cognite. Explore requirements and responsibilities below.",
         "responsibilities": [],
         "requirements": [],
         "skills": [],
-        "applicationUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/4957549101",
-        "sourceUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/4957549101",
+        "applicationUrl": "https://job-boards.eu.greenhouse.io/cognite/jobs/4959438101",
+        "sourceUrl": "https://job-boards.eu.greenhouse.io/cognite/jobs/4959438101",
         "source": "greenhouse",
-        "publishedDate": "2026-09-14T03:11:26.000Z"
+        "publishedDate": "2026-10-07T09:39:58.000Z"
       },
       {
-        "id": "6c139ff2-b23b-4ae1-bae5-f283738531be",
-        "title": "Onboarding Specialist Americas",
-        "company": "Remotepeople",
-        "location": "LATAM",
+        "id": "ccbc9d6c-bb95-4a43-98f6-0f309f626fe6",
+        "title": "Business Development Representative (BDR)",
+        "company": "Cognite",
+        "location": "USA (Phoenix)",
         "employmentType": "Full-time",
         "experienceLevel": null,
         "salary": null,
-        "description": "Open position for Onboarding Specialist Americas at Remotepeople. Explore requirements and responsibilities below.",
+        "description": "Open position for Business Development Representative (BDR) at Cognite. Explore requirements and responsibilities below.",
         "responsibilities": [],
         "requirements": [],
-        "skills": [],
-        "applicationUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/5008054101",
-        "sourceUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/5008054101",
+        "skills": [
+          "Go"
+        ],
+        "applicationUrl": "https://job-boards.eu.greenhouse.io/cognite/jobs/4942059101",
+        "sourceUrl": "https://job-boards.eu.greenhouse.io/cognite/jobs/4942059101",
         "source": "greenhouse",
-        "publishedDate": "2026-10-15T19:07:13.000Z"
+        "publishedDate": "2026-09-30T18:12:21.000Z"
       },
       {
-        "id": "f6c2b2ca-8cb0-4831-93b8-5a84d2170774",
-        "title": "Partnership Sales Manager Americas",
-        "company": "Remotepeople",
-        "location": "Remote - Americas",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Open position for Partnership Sales Manager Americas at Remotepeople. Explore requirements and responsibilities below.",
-        "responsibilities": [],
-        "requirements": [],
-        "skills": [],
-        "applicationUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/4963690101",
-        "sourceUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/4963690101",
-        "source": "greenhouse",
-        "publishedDate": "2026-08-28T23:17:41.000Z"
-      },
-      {
-        "id": "0e409c8d-31c0-435c-a73a-f866700d3084",
-        "title": "Payroll Specialist, EMEA",
-        "company": "Remotepeople",
-        "location": "Remote - Philippines",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Open position for Payroll Specialist, EMEA  at Remotepeople. Explore requirements and responsibilities below.",
-        "responsibilities": [],
-        "requirements": [],
-        "skills": [],
-        "applicationUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/4995757101",
-        "sourceUrl": "https://job-boards.eu.greenhouse.io/remotepeople/jobs/4995757101",
-        "source": "greenhouse",
-        "publishedDate": "2026-10-01T17:16:45.000Z"
-      },
-      {
-        "id": "3ebe8237-6b95-4426-911b-4f88d26c3615",
+        "id": "a7106c13-54b4-4fdb-bebf-b344b181b23e",
         "title": "Associate Principal Engineer (.Net)",
         "company": "Livecareer",
         "location": "Noida, Uttar Pradesh, India",
@@ -34955,7 +34833,7 @@
         "publishedDate": "2026-10-29T08:31:53.000Z"
       },
       {
-        "id": "2e3a0e75-c056-43f5-8148-d1dde8d14ec6",
+        "id": "e1d709de-dc9d-49e9-9f24-fb8e5cf4a8cf",
         "title": "Director, Product Management - Search & Match",
         "company": "Livecareer",
         "location": "United States (Remote)",
@@ -34972,7 +34850,7 @@
         "publishedDate": "2026-10-01T21:14:02.000Z"
       },
       {
-        "id": "93af24bb-54ec-4640-ad8b-6845691fe2fe",
+        "id": "c431d76d-af77-4afd-824e-4114f87b4a65",
         "title": "Director, Security",
         "company": "Livecareer",
         "location": "Noida, Uttar Pradesh, India",
@@ -35000,7 +34878,7 @@
         "publishedDate": "2026-10-15T08:54:29.000Z"
       },
       {
-        "id": "085a2063-4a55-4bea-9785-b01a3b4d2d74",
+        "id": "5c392c05-32a1-4714-a6a3-8f6c04f9260d",
         "title": "Engineer, Devops- Vendor Management",
         "company": "Livecareer",
         "location": "Noida, Uttar Pradesh, India",
@@ -35021,7 +34899,7 @@
         "publishedDate": "2026-10-01T09:22:29.000Z"
       },
       {
-        "id": "2cee83f6-8f96-4004-9ac8-d1e5a791ecc3",
+        "id": "5804504c-8edb-4665-bc85-8813f4005926",
         "title": "Engineering Manager (Search and Match)",
         "company": "Livecareer",
         "location": "Noida, Uttar Pradesh, India",
@@ -35044,7 +34922,7 @@
         "publishedDate": "2026-10-01T07:51:51.000Z"
       },
       {
-        "id": "d98e93ff-9804-4259-81d3-bef63ddd118b",
+        "id": "1d7377b2-51d4-4487-8b70-0a1f6bc30ac8",
         "title": "Lead SDET (Search and Match)",
         "company": "Livecareer",
         "location": "Noida, Uttar Pradesh, India",
@@ -35071,7 +34949,7 @@
         "publishedDate": "2026-10-01T08:06:11.000Z"
       },
       {
-        "id": "57815bcb-a3c8-4436-a2f7-631876f01227",
+        "id": "e9f277fb-bfaa-476a-9f26-e761c2377789",
         "title": "QA Engineer/ Senior QA Engineer-BI",
         "company": "Livecareer",
         "location": "Noida, Uttar Pradesh, India",
@@ -35091,7 +34969,7 @@
         "publishedDate": "2026-10-01T09:06:24.000Z"
       },
       {
-        "id": "a41c51d0-b189-45da-918e-7845ab3693b2",
+        "id": "85200bbd-75e2-49f5-80f9-9e71aade0dab",
         "title": "Sales Enablement Specialist",
         "company": "Livecareer",
         "location": "Puerto Rico",
@@ -35108,7 +34986,7 @@
         "publishedDate": "2026-10-30T13:22:15.000Z"
       },
       {
-        "id": "f159753e-48c2-44bb-be82-e6650ea09183",
+        "id": "4402b8cd-63e2-4057-a115-ee996449a974",
         "title": "Senior Affiliate Partnerships Manager",
         "company": "Livecareer",
         "location": "Puerto Rico",
@@ -35125,7 +35003,7 @@
         "publishedDate": "2026-10-30T13:22:04.000Z"
       },
       {
-        "id": "386775a4-bf13-4509-9af0-fcdde2555109",
+        "id": "2cf51b9e-0bea-47e7-9a34-97ccbe6265fa",
         "title": "Senior Applied AI Engineer",
         "company": "Livecareer",
         "location": "Puerto Rico",
@@ -35149,144 +35027,21 @@
         "publishedDate": "2026-10-30T13:17:34.000Z"
       },
       {
-        "id": "574397aa-d92e-48e5-8ffb-8f7c22f0997d",
-        "title": "1st Shift Production Specialist",
-        "company": "Formlabs",
-        "location": "Perrysburg, OH",
+        "id": "df3be825-67d1-4a8f-a68d-24225b1a6635",
+        "title": "2027 Graduate Analyst",
+        "company": "Elixirr",
+        "location": "London",
         "employmentType": "Full-time",
         "experienceLevel": null,
         "salary": null,
-        "description": "Open position for 1st Shift Production Specialist at Formlabs. Explore requirements and responsibilities below.",
+        "description": "Open position for 2027 Graduate Analyst at Elixirr. Explore requirements and responsibilities below.",
         "responsibilities": [],
         "requirements": [],
         "skills": [],
-        "applicationUrl": "https://careers.formlabs.com/job/8203818/apply/?gh_jid=8203818",
-        "sourceUrl": "https://careers.formlabs.com/job/8203818/apply/?gh_jid=8203818",
+        "applicationUrl": "https://www.elixirr.com/careers/careers-listing/job/?gh_jid=7950016",
+        "sourceUrl": "https://www.elixirr.com/careers/careers-listing/job/?gh_jid=7950016",
         "source": "greenhouse",
-        "publishedDate": "2026-09-15T11:45:39.000Z"
-      },
-      {
-        "id": "6152f687-f9c3-4482-afde-34be65726ed1",
-        "title": "2nd Shift Production Specialist",
-        "company": "Formlabs",
-        "location": "Perrysburg, OH",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Open position for 2nd Shift Production Specialist at Formlabs. Explore requirements and responsibilities below.",
-        "responsibilities": [],
-        "requirements": [],
-        "skills": [],
-        "applicationUrl": "https://careers.formlabs.com/job/8203819/apply/?gh_jid=8203819",
-        "sourceUrl": "https://careers.formlabs.com/job/8203819/apply/?gh_jid=8203819",
-        "source": "greenhouse",
-        "publishedDate": "2026-09-15T11:47:01.000Z"
-      },
-      {
-        "id": "ff7a3f35-e7ea-4bcc-a4a1-a6d953472008",
-        "title": "3D Digital Manufacturing Technician",
-        "company": "Formlabs",
-        "location": "Billerica, MA",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Open position for 3D Digital Manufacturing Technician at Formlabs. Explore requirements and responsibilities below.",
-        "responsibilities": [],
-        "requirements": [],
-        "skills": [
-          "Python"
-        ],
-        "applicationUrl": "https://careers.formlabs.com/job/7996435/apply/?gh_jid=7996435",
-        "sourceUrl": "https://careers.formlabs.com/job/7996435/apply/?gh_jid=7996435",
-        "source": "greenhouse",
-        "publishedDate": "2026-07-20T14:58:46.000Z"
-      },
-      {
-        "id": "b77d0cdf-a390-4e1b-8015-5abecf7fcf31",
-        "title": "3D Print Optimization Engineer",
-        "company": "Formlabs",
-        "location": "Somerville, MA",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Open position for 3D Print Optimization Engineer at Formlabs. Explore requirements and responsibilities below.",
-        "responsibilities": [],
-        "requirements": [],
-        "skills": [],
-        "applicationUrl": "https://careers.formlabs.com/job/8331435/apply/?gh_jid=8331435",
-        "sourceUrl": "https://careers.formlabs.com/job/8331435/apply/?gh_jid=8331435",
-        "source": "greenhouse",
-        "publishedDate": "2026-10-28T17:07:54.000Z"
-      },
-      {
-        "id": "66c8ae78-02e1-49c9-82ad-3c4fd07adc31",
-        "title": "3D Print Optimization Engineer - June 2027 New Grads",
-        "company": "Formlabs",
-        "location": "Somerville, MA",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Open position for 3D Print Optimization Engineer - June 2027 New Grads at Formlabs. Explore requirements and responsibilities below.",
-        "responsibilities": [],
-        "requirements": [],
-        "skills": [],
-        "applicationUrl": "https://careers.formlabs.com/job/8331442/apply/?gh_jid=8331442",
-        "sourceUrl": "https://careers.formlabs.com/job/8331442/apply/?gh_jid=8331442",
-        "source": "greenhouse",
-        "publishedDate": "2026-10-28T17:08:00.000Z"
-      },
-      {
-        "id": "1b6a8a84-4b18-4291-97d7-3615bf505076",
-        "title": "3D Print Production Associate",
-        "company": "Formlabs",
-        "location": "Billerica, MA",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Open position for 3D Print Production Associate at Formlabs. Explore requirements and responsibilities below.",
-        "responsibilities": [],
-        "requirements": [],
-        "skills": [],
-        "applicationUrl": "https://careers.formlabs.com/job/8119602/apply/?gh_jid=8119602",
-        "sourceUrl": "https://careers.formlabs.com/job/8119602/apply/?gh_jid=8119602",
-        "source": "greenhouse",
-        "publishedDate": "2026-08-10T15:49:46.000Z"
-      },
-      {
-        "id": "bfdf244e-37f4-49bc-ade7-6a28d04e2476",
-        "title": "3D Print Production Associate - 2nd Shift",
-        "company": "Formlabs",
-        "location": "Billerica, MA",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Open position for 3D Print Production Associate - 2nd Shift at Formlabs. Explore requirements and responsibilities below.",
-        "responsibilities": [],
-        "requirements": [],
-        "skills": [],
-        "applicationUrl": "https://careers.formlabs.com/job/8246892/apply/?gh_jid=8246892",
-        "sourceUrl": "https://careers.formlabs.com/job/8246892/apply/?gh_jid=8246892",
-        "source": "greenhouse",
-        "publishedDate": "2026-10-01T16:28:38.000Z"
-      },
-      {
-        "id": "73da1bf0-02d4-43be-9e92-8fe28e43379f",
-        "title": "3D Print Technician",
-        "company": "Formlabs",
-        "location": "Somerville, MA",
-        "employmentType": "Full-time",
-        "experienceLevel": null,
-        "salary": null,
-        "description": "Open position for 3D Print Technician at Formlabs. Explore requirements and responsibilities below.",
-        "responsibilities": [],
-        "requirements": [],
-        "skills": [
-          "Python"
-        ],
-        "applicationUrl": "https://careers.formlabs.com/job/8241507/apply/?gh_jid=8241507",
-        "sourceUrl": "https://careers.formlabs.com/job/8241507/apply/?gh_jid=8241507",
-        "source": "greenhouse",
-        "publishedDate": "2026-10-28T17:11:51.000Z"
+        "publishedDate": "2026-09-21T12:38:51.000Z"
       }
     ]
   }

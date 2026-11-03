@@ -20,22 +20,46 @@ const PORT = process.env.PORT || 5000;
 // ─── Storage directories ──────────────────────────────────────────────────────
 const STORAGE_DIR = process.env.STORAGE_DIR || path.join(__dirname, 'data');
 const RESUMES_DIR = path.join(STORAGE_DIR, 'uploads');
-if (!fs.existsSync(STORAGE_DIR)) fs.mkdirSync(STORAGE_DIR, { recursive: true });
-if (!fs.existsSync(RESUMES_DIR)) fs.mkdirSync(RESUMES_DIR, { recursive: true });
+
+function ensureWritableStorage(dirPath, label = 'STORAGE_DIR') {
+  try {
+    if (!fs.existsSync(dirPath)) {
+      fs.mkdirSync(dirPath, { recursive: true });
+    }
+    const testFile = path.join(dirPath, `.write_test_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`);
+    fs.writeFileSync(testFile, 'ok', 'utf8');
+    fs.unlinkSync(testFile);
+  } catch (err) {
+    const errorMsg = `FATAL: Storage directory "${dirPath}" (${label}) is unavailable or not writable: ${err.message}`;
+    console.error(errorMsg);
+    if (process.env.NODE_ENV === 'production' || process.env.STORAGE_DIR) {
+      throw new Error(`CRITICAL: Persistent storage unavailable at ${dirPath}. Refusing to silently fall back in production.`);
+    }
+  }
+}
+
+ensureWritableStorage(STORAGE_DIR, 'STORAGE_DIR');
+ensureWritableStorage(RESUMES_DIR, 'RESUMES_DIR');
 
 // ─── CORS ────────────────────────────────────────────────────────────────────
+const frontendUrls = (process.env.FRONTEND_URL || '')
+  .split(',')
+  .map(url => url.trim().replace(/\/+$/, ''))
+  .filter(Boolean);
+
 const allowedOrigins = [
-  process.env.FRONTEND_URL,
+  ...frontendUrls,
   'http://localhost:5173',
   'http://localhost:3000',
   'http://localhost:8000',
   'http://127.0.0.1:5173',
   'http://127.0.0.1:3000'
-].filter(Boolean);
+];
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
+    const normalizedOrigin = origin ? origin.replace(/\/+$/, '') : null;
+    if (!origin || allowedOrigins.includes(normalizedOrigin) || process.env.NODE_ENV !== 'production') {
       callback(null, true);
     } else {
       callback(new Error(`CORS: origin ${origin} not allowed`));
@@ -114,7 +138,21 @@ const handleResumeUpload = (req, res, next) => {
 // ─── Routes ───────────────────────────────────────────────────────────────────
 
 // Health check
-app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
+app.get('/api/health', (_req, res) => {
+  try {
+    const testFile = path.join(STORAGE_DIR, `.health_probe_${Date.now()}`);
+    fs.writeFileSync(testFile, 'ok');
+    fs.unlinkSync(testFile);
+    res.json({
+      status: 'ok',
+      storage: 'writable',
+      storageDir: STORAGE_DIR,
+      model: process.env.GROQ_MODEL || 'openai/gpt-oss-20b'
+    });
+  } catch (err) {
+    res.status(500).json({ status: 'error', storage: 'unwritable', error: err.message });
+  }
+});
 
 app.get('/', (_req, res) => res.json({ message: 'AI Job Assistant API', status: 'running' }));
 

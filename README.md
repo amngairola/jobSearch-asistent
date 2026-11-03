@@ -55,7 +55,7 @@ AGENT_ALLOW_AUTOMATION=false
 ### Frontend (`frontend-new/.env`)
 
 ```env
-VITE_BACKEND_URL=http://localhost:5000
+VITE_API_URL=http://localhost:5000
 ```
 
 ---
@@ -143,4 +143,4 @@ TOTAL: 11 | PASS: 11 | FAIL: 0 | BLOCKED: 0
 2. Framework: Vite.
 3. Build command: `npm run build`
 4. Output directory: `dist`
-5. Set `VITE_BACKEND_URL` to your Render backend URL.
+5. Set `VITE_API_URL` to your Render backend URL (e.g. `https://ai-job-assistant-backend.onrender.com`).

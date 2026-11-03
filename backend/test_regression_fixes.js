@@ -1,3 +1,5 @@
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 const assert = require('assert');
 const JobSearchAgent = require('./agents/jobSearchAgent');
 const axios = require('axios');

@@ -13,13 +13,23 @@ const os = require('os');
 class FileStore {
   constructor() {
     this.baseDir = process.env.STORAGE_DIR || path.join(__dirname, '..', 'data');
-    if (!fs.existsSync(this.baseDir)) {
-      fs.mkdirSync(this.baseDir, { recursive: true });
-    }
-    // Ensure standard subdirectories exist
-    for (const sub of ['resumes', 'sessions', 'applications', 'jobs', 'uploads']) {
-      const dir = path.join(this.baseDir, sub);
-      if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    try {
+      if (!fs.existsSync(this.baseDir)) {
+        fs.mkdirSync(this.baseDir, { recursive: true });
+      }
+      // Ensure standard subdirectories exist
+      for (const sub of ['resumes', 'sessions', 'applications', 'jobs', 'uploads']) {
+        const dir = path.join(this.baseDir, sub);
+        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+      }
+      const testFile = path.join(this.baseDir, `.store_probe_${Date.now()}`);
+      fs.writeFileSync(testFile, 'ok');
+      fs.unlinkSync(testFile);
+    } catch (err) {
+      console.error(`FATAL: FileStore directory "${this.baseDir}" is unavailable or not writable: ${err.message}`);
+      if (process.env.NODE_ENV === 'production' || process.env.STORAGE_DIR) {
+        throw new Error(`CRITICAL: FileStore persistent storage unavailable at ${this.baseDir}. Refusing to run without persistent storage in production.`);
+      }
     }
   }
 

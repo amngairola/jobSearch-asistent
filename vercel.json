@@ -6,6 +6,6 @@
     { "source": "/api/(.*)", "destination": "https://YOUR_RENDER_BACKEND_URL/api/$1" }
   ],
   "env": {
-    "VITE_BACKEND_URL": "https://YOUR_RENDER_BACKEND_URL"
+    "VITE_API_URL": "https://YOUR_RENDER_BACKEND_URL"
   }
 }

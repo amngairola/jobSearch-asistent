@@ -73,7 +73,7 @@ class BaseAgent {
     while (iteration < this.maxIterations) {
       try {
         const requestPayload = {
-          model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
+          model: process.env.GROQ_MODEL || 'openai/gpt-oss-20b',
           messages,
         };
         if (toolsArg && toolsArg.length > 0) {
@@ -146,7 +146,7 @@ class BaseAgent {
         content: 'Please provide your final answer based on the information gathered so far.'
       });
       const finalResponse = await this.client.chat.completions.create({
-        model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
+        model: process.env.GROQ_MODEL || 'openai/gpt-oss-20b',
         messages,
       });
       return finalResponse.choices[0].message.content || 'I reached the maximum number of steps. Please try a simpler request.';
