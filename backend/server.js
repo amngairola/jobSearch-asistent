@@ -18,10 +18,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // ─── Storage directories ──────────────────────────────────────────────────────
-const STORAGE_DIR = process.env.STORAGE_DIR || path.join(__dirname, 'data');
-const RESUMES_DIR = path.join(STORAGE_DIR, 'uploads');
+const DEFAULT_STORAGE_DIR = path.join(__dirname, 'data');
+let resolvedStorageDir = process.env.STORAGE_DIR || DEFAULT_STORAGE_DIR;
 
-function ensureWritableStorage(dirPath, label = 'STORAGE_DIR') {
+function testDirectoryWritable(dirPath) {
   try {
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(dirPath, { recursive: true });
@@ -29,17 +29,26 @@ function ensureWritableStorage(dirPath, label = 'STORAGE_DIR') {
     const testFile = path.join(dirPath, `.write_test_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`);
     fs.writeFileSync(testFile, 'ok', 'utf8');
     fs.unlinkSync(testFile);
+    return true;
   } catch (err) {
-    const errorMsg = `FATAL: Storage directory "${dirPath}" (${label}) is unavailable or not writable: ${err.message}`;
-    console.error(errorMsg);
-    if (process.env.NODE_ENV === 'production' || process.env.STORAGE_DIR) {
-      throw new Error(`CRITICAL: Persistent storage unavailable at ${dirPath}. Refusing to silently fall back in production.`);
-    }
+    return false;
   }
 }
 
-ensureWritableStorage(STORAGE_DIR, 'STORAGE_DIR');
-ensureWritableStorage(RESUMES_DIR, 'RESUMES_DIR');
+if (!testDirectoryWritable(resolvedStorageDir)) {
+  console.warn(`[WARN] Configured storage directory "${resolvedStorageDir}" is not writable. Falling back to local directory "${DEFAULT_STORAGE_DIR}".`);
+  resolvedStorageDir = DEFAULT_STORAGE_DIR;
+  if (!testDirectoryWritable(resolvedStorageDir)) {
+    throw new Error(`CRITICAL: Storage directory "${resolvedStorageDir}" is not writable.`);
+  }
+}
+
+process.env.STORAGE_DIR = resolvedStorageDir;
+const STORAGE_DIR = resolvedStorageDir;
+const RESUMES_DIR = path.join(STORAGE_DIR, 'uploads');
+if (!fs.existsSync(RESUMES_DIR)) {
+  try { fs.mkdirSync(RESUMES_DIR, { recursive: true }); } catch (_) {}
+}
 
 // ─── CORS ────────────────────────────────────────────────────────────────────
 const frontendUrls = (process.env.FRONTEND_URL || '')

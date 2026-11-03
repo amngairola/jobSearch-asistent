@@ -12,23 +12,35 @@ const os = require('os');
  */
 class FileStore {
   constructor() {
-    this.baseDir = process.env.STORAGE_DIR || path.join(__dirname, '..', 'data');
-    try {
-      if (!fs.existsSync(this.baseDir)) {
-        fs.mkdirSync(this.baseDir, { recursive: true });
-      }
-      // Ensure standard subdirectories exist
-      for (const sub of ['resumes', 'sessions', 'applications', 'jobs', 'uploads']) {
-        const dir = path.join(this.baseDir, sub);
+    const defaultDir = path.join(__dirname, '..', 'data');
+    let targetDir = process.env.STORAGE_DIR || defaultDir;
+
+    const isWritable = (dir) => {
+      try {
         if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+        const testFile = path.join(dir, `.store_probe_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`);
+        fs.writeFileSync(testFile, 'ok');
+        fs.unlinkSync(testFile);
+        return true;
+      } catch (_) {
+        return false;
       }
-      const testFile = path.join(this.baseDir, `.store_probe_${Date.now()}`);
-      fs.writeFileSync(testFile, 'ok');
-      fs.unlinkSync(testFile);
-    } catch (err) {
-      console.error(`FATAL: FileStore directory "${this.baseDir}" is unavailable or not writable: ${err.message}`);
-      if (process.env.NODE_ENV === 'production' || process.env.STORAGE_DIR) {
-        throw new Error(`CRITICAL: FileStore persistent storage unavailable at ${this.baseDir}. Refusing to run without persistent storage in production.`);
+    };
+
+    if (!isWritable(targetDir)) {
+      console.warn(`[WARN] Configured storage directory "${targetDir}" is not writable. Falling back to "${defaultDir}".`);
+      targetDir = defaultDir;
+      if (!isWritable(targetDir)) {
+        throw new Error(`CRITICAL: Neither "${process.env.STORAGE_DIR}" nor "${defaultDir}" is writable.`);
+      }
+    }
+
+    this.baseDir = targetDir;
+    // Ensure standard subdirectories exist
+    for (const sub of ['resumes', 'sessions', 'applications', 'jobs', 'uploads']) {
+      const dir = path.join(this.baseDir, sub);
+      if (!fs.existsSync(dir)) {
+        try { fs.mkdirSync(dir, { recursive: true }); } catch (_) {}
       }
     }
   }
