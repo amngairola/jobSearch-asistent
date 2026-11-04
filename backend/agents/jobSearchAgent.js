@@ -3,6 +3,7 @@ const cheerio = require('cheerio');
 const { v4: uuidv4 } = require('uuid');
 const fileStore = require('../utils/fileStore');
 const { getGroqClient } = require('../utils/groqClient');
+const { verifyUrlReachability, classifyApplicationUrl } = require('../utils/urlHelper');
 require('dotenv').config();
 
 /**
@@ -238,17 +239,71 @@ class JobSearchAgent {
     return match ? match[1] : null;
   }
 
-  /** Fetch structured jobs from Greenhouse with Cheerio HTML cleaning */
-  async _fetchGreenhouseJobs(slug) {
+  /** Helper to infer experience level from title and text */
+  static inferExperienceLevel(titleText, snippet = '') {
+    const combined = `${titleText} ${snippet}`.toLowerCase();
+    if (combined.includes('internship') || combined.includes('intern') || combined.includes('trainee')) {
+      return 'Internship';
+    }
+    if (
+      combined.includes('fresher') ||
+      combined.includes('entry-level') ||
+      combined.includes('entry level') ||
+      combined.includes('junior') ||
+      combined.includes('jr.') ||
+      combined.includes('jr ') ||
+      combined.includes('associate') ||
+      combined.includes('graduate') ||
+      combined.includes('0-1 year') ||
+      combined.includes('0 to 1 year')
+    ) {
+      return 'Entry-level';
+    }
+    if (
+      combined.includes('senior') ||
+      combined.includes('sr.') ||
+      combined.includes('sr ') ||
+      combined.includes('lead') ||
+      combined.includes('principal') ||
+      combined.includes('staff') ||
+      combined.includes('architect') ||
+      combined.includes('director') ||
+      combined.includes('head of')
+    ) {
+      return 'Senior';
+    }
+    if (combined.includes('mid') || combined.includes('intermediate')) {
+      return 'Mid-level';
+    }
+    return null;
+  }
+
+  /** Fetch structured jobs from Greenhouse with Cheerio HTML cleaning and role filtering */
+  async _fetchGreenhouseJobs(slug, queryTokens = [], isFresher = false) {
     try {
       const ghUrl = `https://boards-api.greenhouse.io/v1/boards/${slug}/jobs?content=true`;
-      const { data } = await axios.get(ghUrl, { timeout: 10000 });
+      const { data } = await axios.get(ghUrl, { timeout: 8000 });
       if (!data || !Array.isArray(data.jobs)) return [];
 
       const companyName = slug.charAt(0).toUpperCase() + slug.slice(1);
 
-      return data.jobs.slice(0, 10).map(job => {
-        // Parse HTML content using Cheerio
+      // Filter jobs by query relevance so unrelated company jobs (e.g. Sales, Legal) aren't dumped into results
+      const relevantJobs = data.jobs.filter(job => {
+        const titleLower = (job.title || '').toLowerCase();
+        // If fresher requested, exclude senior positions
+        if (isFresher && /\b(senior|sr\b|lead|principal|staff|architect|director|vp|head of)\b/i.test(titleLower)) {
+          return false;
+        }
+        // If query tokens present, must match at least one relevant token or general software roles
+        if (queryTokens.length > 0) {
+          const matchesToken = queryTokens.some(t => titleLower.includes(t));
+          const isTechRole = /\b(developer|engineer|software|frontend|backend|fullstack|full stack|web|programmer|coder|tech)\b/i.test(titleLower);
+          return matchesToken || isTechRole;
+        }
+        return true;
+      });
+
+      return relevantJobs.slice(0, 8).map(job => {
         const $ = cheerio.load(job.content || '');
         const paragraphs = [];
         $('p').each((_, el) => {
@@ -271,13 +326,15 @@ class JobSearchAgent {
         const cleanDesc = paragraphs.slice(0, 2).join(' ') ||
           `Open position for ${job.title} at ${companyName}. Explore requirements and responsibilities below.`;
 
+        const expLevel = JobSearchAgent.inferExperienceLevel(job.title, cleanDesc);
+
         return {
           id: uuidv4(),
           title: cleanJobTitle(job.title || 'Untitled'),
           company: companyName,
           location: (job.location && job.location.name) || 'Remote',
           employmentType: 'Full-time',
-          experienceLevel: null,
+          experienceLevel: expLevel,
           salary: null,
           description: cleanDesc,
           responsibilities,
@@ -286,7 +343,9 @@ class JobSearchAgent {
           applicationUrl: job.absolute_url || `https://boards.greenhouse.io/${slug}`,
           sourceUrl: job.absolute_url || `https://boards.greenhouse.io/${slug}`,
           source: 'greenhouse',
-          publishedDate: job.updated_at ? new Date(job.updated_at).toISOString() : null
+          publishedDate: job.updated_at ? new Date(job.updated_at).toISOString() : null,
+          verificationStatus: 'verified',
+          lastVerifiedAt: new Date().toISOString()
         };
       });
     } catch (e) {
@@ -294,23 +353,35 @@ class JobSearchAgent {
     }
   }
 
-  /** Fetch structured jobs from Lever with Cheerio HTML cleaning */
-  async _fetchLeverJobs(company) {
+  /** Fetch structured jobs from Lever with Cheerio HTML cleaning and role filtering */
+  async _fetchLeverJobs(company, queryTokens = [], isFresher = false) {
     try {
       const leverUrl = `https://api.lever.co/v0/postings/${company}`;
-      const { data } = await axios.get(leverUrl, { timeout: 10000 });
+      const { data } = await axios.get(leverUrl, { timeout: 8000 });
       if (!Array.isArray(data)) return [];
 
       const companyName = company.charAt(0).toUpperCase() + company.slice(1);
 
-      return data.slice(0, 10).map(job => {
+      const relevantJobs = data.filter(job => {
+        const titleLower = (job.text || '').toLowerCase();
+        if (isFresher && /\b(senior|sr\b|lead|principal|staff|architect|director|vp|head of)\b/i.test(titleLower)) {
+          return false;
+        }
+        if (queryTokens.length > 0) {
+          const matchesToken = queryTokens.some(t => titleLower.includes(t));
+          const isTechRole = /\b(developer|engineer|software|frontend|backend|fullstack|full stack|web|programmer|tech)\b/i.test(titleLower);
+          return matchesToken || isTechRole;
+        }
+        return true;
+      });
+
+      return relevantJobs.slice(0, 8).map(job => {
         const rawContent = job.descriptionPlain || job.description || '';
         const $ = cheerio.load(job.description || '');
 
         const responsibilities = [];
         const requirements = [];
 
-        // Lever lists
         $('li').each((i, el) => {
           const t = $(el).text().trim();
           if (t.length > 10 && t.length < 250) {
@@ -325,13 +396,15 @@ class JobSearchAgent {
         const cleanDesc = rawContent.split('\n').filter(p => p.trim().length > 30).slice(0, 2).join(' ') ||
           `Exciting role for a ${job.text} joining the team at ${companyName}.`;
 
+        const expLevel = JobSearchAgent.inferExperienceLevel(job.text, cleanDesc);
+
         return {
           id: uuidv4(),
           title: cleanJobTitle(job.text || 'Untitled'),
           company: companyName,
           location: (job.categories && job.categories.location) || 'Remote',
           employmentType: (job.categories && job.categories.commitment) || 'Full-time',
-          experienceLevel: null,
+          experienceLevel: expLevel,
           salary: null,
           description: cleanDesc,
           responsibilities,
@@ -340,7 +413,9 @@ class JobSearchAgent {
           applicationUrl: job.hostedUrl || `https://jobs.lever.co/${company}`,
           sourceUrl: job.hostedUrl || `https://jobs.lever.co/${company}`,
           source: 'lever',
-          publishedDate: job.createdAt ? new Date(job.createdAt).toISOString() : null
+          publishedDate: job.createdAt ? new Date(job.createdAt).toISOString() : null,
+          verificationStatus: 'verified',
+          lastVerifiedAt: new Date().toISOString()
         };
       });
     } catch (e) {
@@ -360,6 +435,15 @@ class JobSearchAgent {
     const company = cleanCompanyName('', result.url, rawTitle);
     const title = cleanJobTitle(rawTitle);
     const skills = extractSkillsFromText(`${title} ${cleanText}`);
+
+    // Clean tracking query parameters from URL
+    let cleanAppUrl = result.url || '';
+    try {
+      const u = new URL(cleanAppUrl);
+      const paramsToDelete = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'ref', 'source', 'gh_src', 'src'];
+      paramsToDelete.forEach(p => u.searchParams.delete(p));
+      cleanAppUrl = u.toString();
+    } catch (_) {}
 
     // Break cleanText into sentences for requirements and description
     const sentences = cleanText.split(/(?<=[.!?])\s+/).filter(s => s.trim().length > 15);
@@ -387,15 +471,7 @@ class JobSearchAgent {
     }
 
     // Infer experience level
-    let experienceLevel = null;
-    const lowerTitle = title.toLowerCase();
-    if (lowerTitle.includes('senior') || lowerTitle.includes('sr') || lowerTitle.includes('lead') || lowerTitle.includes('principal')) {
-      experienceLevel = 'Senior';
-    } else if (lowerTitle.includes('junior') || lowerTitle.includes('jr') || lowerTitle.includes('entry') || lowerTitle.includes('intern')) {
-      experienceLevel = 'Entry-level';
-    } else if (lowerTitle.includes('mid') || lowerTitle.includes('intermediate')) {
-      experienceLevel = 'Mid-level';
-    }
+    const experienceLevel = JobSearchAgent.inferExperienceLevel(title, cleanText);
 
     // Infer employment type
     let employmentType = 'Full-time';
@@ -422,10 +498,12 @@ class JobSearchAgent {
       responsibilities: respSentences,
       requirements: reqSentences,
       skills,
-      applicationUrl: result.url,
+      applicationUrl: cleanAppUrl,
       sourceUrl: result.url,
       source: 'tavily',
-      publishedDate: result.published_date || null
+      publishedDate: result.published_date || null,
+      verificationStatus: 'unverified',
+      lastVerifiedAt: null
     };
   }
 
@@ -435,14 +513,14 @@ class JobSearchAgent {
     const seenPairs = new Set();
 
     return jobs.filter(job => {
-      // Normalize URL (strip tracking params)
-      let normUrl = job.applicationUrl;
+      // Normalize URL (strip tracking params and trailing slash)
+      let normUrl = (job.applicationUrl || '').replace(/\/+$/, '');
       try {
         const u = new URL(job.applicationUrl);
-        normUrl = `${u.origin}${u.pathname}`;
+        normUrl = `${u.origin}${u.pathname}`.replace(/\/+$/, '');
       } catch (_) {}
 
-      const pairKey = `${job.title.toLowerCase().replace(/\s+/g, '')}:${job.company.toLowerCase().replace(/\s+/g, '')}`;
+      const pairKey = `${job.title.toLowerCase().replace(/[^a-z0-9]/g, '')}:${job.company.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
 
       if (seenUrls.has(normUrl) || seenPairs.has(pairKey)) {
         return false;
@@ -454,16 +532,47 @@ class JobSearchAgent {
     });
   }
 
-  /** Main search method */
+  /** Main search method with experience-aware query generation & parallel URL verification */
   async search(query, location = '', remote = false) {
-    // 1. Target individual job postings with search modifier
-    let baseQuery = `${query}`;
-    if (location) baseQuery += ` in ${location}`;
-    if (remote) baseQuery += ' remote';
+    const lowerQuery = (query || '').toLowerCase();
+    const isFresher = /\b(fresher|entry[\s-]level|junior|jr\b|graduate|intern|internship|trainee|0[\s-]*1\s*year|campus)\b/i.test(lowerQuery);
+    const isIntern = /\b(intern|internship|trainee)\b/i.test(lowerQuery);
+    const isSenior = /\b(senior|sr\b|lead|principal|staff|architect|director|head of)\b/i.test(lowerQuery);
 
-    // Targeted ATS search for high-fidelity structured boards
-    const boardSearch = `("${query}") (site:boards.greenhouse.io OR site:jobs.lever.co) ${location ? location : ''}`;
-    const boardResults = await this._tavilySearch(boardSearch, 6);
+    // Extract core query tokens for relevance matching on company boards
+    const stopWords = new Set(['jobs', 'job', 'hiring', 'fresher', 'entry', 'level', 'junior', 'senior', 'role', 'roles', 'india', 'remote', 'in', 'for', 'at', 'with', 'and', 'the']);
+    const queryTokens = lowerQuery
+      .replace(/[^a-z0-9#+.]/g, ' ')
+      .split(/\s+/)
+      .filter(w => w.length > 1 && !stopWords.has(w));
+    if (lowerQuery.includes('react')) queryTokens.push('react');
+    if (lowerQuery.includes('node')) queryTokens.push('node');
+    if (lowerQuery.includes('frontend')) queryTokens.push('frontend');
+    if (lowerQuery.includes('backend')) queryTokens.push('backend');
+    if (lowerQuery.includes('fullstack') || lowerQuery.includes('full stack')) queryTokens.push('full stack');
+
+    // 1. Build targeted search queries
+    let boardSearch = `("${query}") (site:boards.greenhouse.io OR site:jobs.lever.co OR site:jobs.ashbyhq.com)`;
+    if (location) boardSearch += ` ${location}`;
+    if (isFresher) boardSearch += ` (junior OR entry OR intern OR associate)`;
+
+    let directSearch = `"${query}" job hiring`;
+    if (location) directSearch += ` "${location}"`;
+    if (remote) directSearch += ` "remote"`;
+
+    if (isFresher) {
+      directSearch += ` ("fresher" OR "entry level" OR "junior" OR "intern" OR "0-1 year") -intitle:"senior" -intitle:"lead" -intitle:"principal" -intitle:"director" -intitle:"jobs in" -intitle:"vacancies"`;
+    } else if (isSenior) {
+      directSearch += ` ("senior" OR "lead" OR "principal") -intitle:"intern" -intitle:"junior" -intitle:"jobs in" -intitle:"vacancies"`;
+    } else {
+      directSearch += ` -intitle:"jobs in" -intitle:"vacancies" -intitle:"reviews in" -intitle:"salaries in"`;
+    }
+
+    // Execute searches
+    const [boardResults, directResults] = await Promise.all([
+      this._tavilySearch(boardSearch, 6),
+      this._tavilySearch(directSearch, 10)
+    ]);
 
     const structuredJobs = [];
     const slugsSeen = new Set();
@@ -477,14 +586,14 @@ class JobSearchAgent {
           const slug = this._extractGreenhouseSlug(url);
           if (slug && !slugsSeen.has(`gh:${slug}`)) {
             slugsSeen.add(`gh:${slug}`);
-            const ghJobs = await this._fetchGreenhouseJobs(slug);
+            const ghJobs = await this._fetchGreenhouseJobs(slug, queryTokens, isFresher);
             structuredJobs.push(...ghJobs);
           }
         } else if (url.includes('lever.co')) {
           const comp = this._extractLeverCompany(url);
           if (comp && !slugsSeen.has(`lv:${comp}`)) {
             slugsSeen.add(`lv:${comp}`);
-            const leverJobs = await this._fetchLeverJobs(comp);
+            const leverJobs = await this._fetchLeverJobs(comp, queryTokens, isFresher);
             structuredJobs.push(...leverJobs);
           }
         }
@@ -492,10 +601,6 @@ class JobSearchAgent {
         console.warn(`Structured ATS fetch error for ${url}:`, e.message);
       }
     }
-
-    // Direct job postings search via Tavily
-    const directSearch = `"${query}" job posting hiring ${location} -intitle:"202" -intitle:"jobs in" -intitle:"vacancies"`;
-    const directResults = await this._tavilySearch(directSearch, 10);
 
     // Filter out aggregator pages & normalize individual listings
     const cleanTavilyJobs = [];
@@ -510,14 +615,65 @@ class JobSearchAgent {
       }
     }
 
-    // Combine direct jobs matching user query/location first, then structured ATS board jobs
-    const allJobs = this._dedupe([...cleanTavilyJobs, ...structuredJobs]);
+    // Combine candidate jobs
+    const candidateJobs = this._dedupe([...cleanTavilyJobs, ...structuredJobs]);
+
+    // 2. Perform parallel URL verification to identify active, reachable links vs expired/broken
+    const verifiedJobs = [];
+    const BATCH_SIZE = 5;
+
+    for (let i = 0; i < candidateJobs.length; i += BATCH_SIZE) {
+      const batch = candidateJobs.slice(i, i + BATCH_SIZE);
+      await Promise.all(batch.map(async (job) => {
+        // Direct API jobs from Greenhouse/Lever boards are already verified active
+        if (job.source === 'greenhouse' || job.source === 'lever') {
+          job.verificationStatus = 'verified';
+          job.lastVerifiedAt = new Date().toISOString();
+          verifiedJobs.push(job);
+          return;
+        }
+
+        try {
+          const check = await verifyUrlReachability(job.applicationUrl, 2500);
+          job.verificationStatus = check.verificationStatus;
+          job.lastVerifiedAt = check.lastVerifiedAt;
+          if (check.destinationUrl) {
+            job.applicationUrl = check.destinationUrl;
+          }
+
+          // Discard expired (404, 410, redirect to search index) and invalid links
+          if (job.verificationStatus !== 'expired' && job.verificationStatus !== 'invalid') {
+            verifiedJobs.push(job);
+          }
+        } catch (_) {
+          // In case of transient verification error, retain as unverified rather than dropping
+          job.verificationStatus = 'unverified';
+          job.lastVerifiedAt = new Date().toISOString();
+          verifiedJobs.push(job);
+        }
+      }));
+    }
+
+    // 3. Strict experience level matching: filter out senior roles if fresher/intern requested
+    let finalJobs = verifiedJobs;
+    if (isFresher) {
+      finalJobs = finalJobs.filter(job => {
+        const titleLower = (job.title || '').toLowerCase();
+        const isSeniorTitle = /\b(senior|sr\b|lead|principal|staff|architect|director|vp|head of)\b/i.test(titleLower);
+        return !isSeniorTitle && job.experienceLevel !== 'Senior';
+      });
+    } else if (isIntern) {
+      finalJobs.sort((a, b) => (b.employmentType === 'Internship' ? 1 : 0) - (a.employmentType === 'Internship' ? 1 : 0));
+    }
+
+    // Deduplicate once more after URL redirects
+    const finalCleanJobs = this._dedupe(finalJobs);
 
     // Persist latest jobs to storage
-    fileStore.upsert('jobs', { id: 'latest', data: allJobs });
+    fileStore.upsert('jobs', { id: 'latest', data: finalCleanJobs });
 
-    console.log(`[JobSearch] Discovered ${allJobs.length} verified individual listings for query "${query}" (${structuredJobs.length} ATS, ${cleanTavilyJobs.length} web)`);
-    return allJobs;
+    console.log(`[JobSearch] Discovered ${finalCleanJobs.length} active/verified listings for query "${query}" (${structuredJobs.length} direct ATS, ${cleanTavilyJobs.length} web candidates verified)`);
+    return finalCleanJobs;
   }
 }
 
@@ -526,5 +682,6 @@ JobSearchAgent.isIndividualJobListing = isIndividualJobListing;
 JobSearchAgent.cleanCompanyName = cleanCompanyName;
 JobSearchAgent.cleanJobTitle = cleanJobTitle;
 JobSearchAgent.extractSkillsFromText = extractSkillsFromText;
+JobSearchAgent.inferExperienceLevel = JobSearchAgent.inferExperienceLevel;
 
 module.exports = JobSearchAgent;

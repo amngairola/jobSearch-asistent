@@ -410,6 +410,23 @@ app.get('/api/applications', async (req, res) => {
   }
 });
 
+// Update application status
+app.patch('/api/applications/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+    if (!status) return res.status(400).json({ error: 'status is required' });
+
+    const tracker = new ApplicationTrackerAgent();
+    const updated = await tracker.updateStatus(id, status);
+    res.json({ success: true, application: updated });
+  } catch (error) {
+    console.error('Update application status error:', error);
+    const code = error.message.includes('not found') ? 404 : 500;
+    res.status(code).json({ error: error.message });
+  }
+});
+
 // ─── Global Error Handler ────────────────────────────────────────────────────
 app.use((err, req, res, _next) => {
   console.error('Unhandled server error:', err);

@@ -55,6 +55,9 @@ class JobMatcherAgent {
     // 2. Title & Role Alignment (0 - 25)
     let titleScore = 0;
     const userRole = (resume.designation || '').toLowerCase();
+    const isSeniorJob = /\b(senior|sr\b|lead|principal|staff|architect|director|vp|head of)\b/i.test(titleText) || job.experienceLevel === 'Senior';
+    const isCandidateFresher = /\b(fresher|entry|intern|graduate|student|trainee|junior)\b/i.test(userRole) || (!resume.experience || resume.experience.length <= 1);
+
     if (userRole) {
       const roleTokens = userRole.split(/\s+/).filter(w => w.length > 2);
       const matchedTokens = roleTokens.filter(t => titleText.includes(t));
@@ -63,6 +66,13 @@ class JobMatcherAgent {
       }
     } else {
       titleScore = 12; // neutral
+    }
+
+    // Seniority penalty / reward
+    if (isCandidateFresher && isSeniorJob) {
+      titleScore = Math.min(titleScore, 5); // penalize senior roles for freshers
+    } else if (isCandidateFresher && (job.experienceLevel === 'Entry-level' || job.employmentType === 'Internship')) {
+      titleScore = Math.min(25, titleScore + 8); // reward entry-level alignment
     }
 
     // 3. Location Alignment (0 - 15)

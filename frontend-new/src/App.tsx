@@ -326,6 +326,9 @@ function AppContent() {
                 <ApplicationHistory
                   applications={appsQuery.data?.applications || applications}
                   loading={appsQuery.isLoading}
+                  onStatusChanged={() => {
+                    appsQuery.refetch();
+                  }}
                 />
               </div>
             </motion.div>

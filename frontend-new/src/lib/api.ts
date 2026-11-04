@@ -55,7 +55,7 @@ export interface Job {
   company: string;
   location: string;
   employmentType?: string;
-  experienceLevel?: string;
+  experienceLevel?: string | null;
   salary?: string | null;
   description: string;
   responsibilities?: string[];
@@ -65,7 +65,9 @@ export interface Job {
   url?: string;
   sourceUrl?: string;
   source: string;
-  publishedDate?: string;
+  publishedDate?: string | null;
+  verificationStatus?: 'verified' | 'unverified' | 'expired' | 'invalid';
+  lastVerifiedAt?: string | null;
 }
 
 export interface JobMatch {
@@ -189,6 +191,12 @@ export async function submitApplication(jobId: string, sessionId: string): Promi
 // Get application history
 export async function getApplications(sessionId: string): Promise<{ applications: Application[] }> {
   const { data } = await api.get('/api/applications', { params: { session_id: sessionId } });
+  return data;
+}
+
+// Update application status
+export async function updateApplicationStatus(id: string, status: string): Promise<{ success: boolean; application: Application }> {
+  const { data } = await api.patch(`/api/applications/${id}`, { status });
   return data;
 }
 

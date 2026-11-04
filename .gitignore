@@ -17,6 +17,8 @@ frontend-new/dist/
 dist-ssr/
 *.tsbuildinfo
 .vite/
+ docs/
+ /docs
 
 # Operating System & IDE
 .DS_Store
